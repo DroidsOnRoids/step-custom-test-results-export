@@ -60,10 +60,11 @@ func main() {
 		}
 	}
 
-	match := matches[0]
-	exporter := testresultexport.NewExporter(stepConf.TestResultsDir)
+	for i, match := range matches {
+		exporter := testresultexport.NewExporter(stepConf.TestResultsDir)
 
-	if err := exporter.ExportTest(stepConf.TestName, match); err != nil {
-		failf("Failed to export test result: %s", err)
+		if err := exporter.ExportTest(stepConf.TestName[i], match); err != nil {
+			failf("Failed to export test result: %s", err)
+		}
 	}
 }
