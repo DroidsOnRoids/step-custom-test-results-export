@@ -52,7 +52,7 @@ func TestExportTestWritesTestResults(t *testing.T) {
 	testSubject.SetCopy(mockFuncs.Copy)
 
 	// Act
-	err := testSubject.ExportTest(testName, testResultPath)
+	err := testSubject.ExportTest(testResultPath)
 
 	// Assert
 	assert.Nil(t, err, "error should be nil")
@@ -76,7 +76,7 @@ func TestExportTestMkdirFails(t *testing.T) {
 	testSubject.SetCopy(mockFuncs.Copy)
 
 	// Act
-	err := testSubject.ExportTest(testName, testResultPath)
+	err := testSubject.ExportTest(testResultPath)
 
 	// Assert
 	assert.EqualErrorf(t,
@@ -108,7 +108,7 @@ func TestExportTestGenerateTestInfoFileFails(t *testing.T) {
 	testSubject.SetCopy(mockFuncs.Copy)
 
 	// Act
-	err := testSubject.ExportTest(testName, testResultPath)
+	err := testSubject.ExportTest(testResultPath)
 
 	// Assert
 	assert.Equal(t, err, testError, "should throw the expected error")

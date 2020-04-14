@@ -2,6 +2,7 @@ package testresultexport
 
 import (
 	"fmt"
+	"github.com/bitrise-io/go-utils/pathutil"
 	"os"
 	"path/filepath"
 
@@ -61,7 +62,8 @@ func (e *Exporter) SetCopy(copy func(src, dst string) error) {
 }
 
 // ExportTest exports a test result with a given name
-func (e *Exporter) ExportTest(name string, testResultPath string) error {
+func (e *Exporter) ExportTest(testResultPath string) error {
+	name := pathutil.GetFileName(testResultPath)
 	testInfo := &TestInfo{
 		Name: name,
 	}
